@@ -1,18 +1,30 @@
 {% load static %}
 <html>
   <head>
-    <title>Django blog</title>
+    <title>Blogly</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:
 stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
 <body>
-  <header>
-    <h1><a href="/">Django blog</a></h1>
-  </header>
-      <div class="container">
-        {% block content %}
-        {% endblock content %}
+  <div class="container">
+    <header style="background-color:powderblue;">
+        <div class="nav-left">
+          <h1>Blogly <span class="badge badge-secondary"></span></h1>
+        </div>
+      <div class="nav-right">
+        {% if user.is_authenticated %}
+          <p>Hi {{ user.username }}!</p>
+          <button type="submit" class="btn btn-link"><a href="{% url 'logout' %}">logout</a></button>
+        {% else %}
+          <p>You are not logged in.</p>
+            <button type="submit" class="btn btn-link"><a href="{% url 'login' %}">login</a></button>
+        {% endif %}
+      </div>
+    </header>
+    <button type="submit" class="btn btn-link"><a href="{% url 'post_new' %}"">New Blog Post</a></button>
+    {% block content %}
+    {% endblock content %}
       </div>
     </body>
   </html>
