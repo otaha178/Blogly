@@ -3,25 +3,23 @@ font-family: 'Source Sans Pro', sans-serif;
 font-size: 18px;
 }
 header {
-border-bottom: 1px solid #999;
-margin-bottom: 2rem;
-display: flex;
+  border-bottom: 1px solid #999;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  display: flex;
 }
 
 
-header h1 a {
-background-color: powderblue;
-color: red;
-text-decoration:none;
+.h2 {
+  margin-left: 2rem;
 }
-
 .nav-left{
   margin-right: auto;
 }
 
 .nav-right{
   display: flex;
-  padding-top: 2rem;
+  padding-top: 10rem;
 }
 .post-entry{
   margin-bottom: 2rem;
@@ -42,4 +40,24 @@ post-entry h2 a:visited{
 
 .post-entry h2 a:hover {
   color: red;
+}
+
+.sidenav {
+  width:10px;
+  top: 0;
+  position: fixed;
+  z-index: 1;
+
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #000000;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #3e3f3a;
 }

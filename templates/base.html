@@ -1,9 +1,16 @@
 {% load static %}
 {% load blog_tags %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 <html>
 <head>
     <title>Blogly</title>
@@ -13,39 +20,43 @@ stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-<div class="container">
-    <header style="background-color:navy;">
-        <div class="nav-left">
-            <h1><a href="{%url 'home' %}"class="badge badge-secondary">Blogly</></a></h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:black">
+    <a class="navbar-brand" href="#">Blogly</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        </div>
-        <div class="nav-right">
-            {% if user.is_authenticated %}
-            <p>Hi {{ user.username }}! <a href="{% url 'logout' %}" class="btn btn-outline-secondary">logout</a></p>
-            {% else %}
-            <p>You are not logged in.</p>
-            <button type="submit" class="btn btn-link"><a href="{% url 'login' %}">login</a></button>
-            {% endif %}
-        </div>
-    </header>
-    <button type="submit" class="btn btn-link"><a href="{% url 'post_new' %}">New Blog Post</a></button>
-    {% block content %}
-    {% endblock content %}
-
-</div>
- <div id="sidebar">
-        <h3>Latest posts</h3>
-        {% show_latest_posts 3 %}
-     <p><a href="{% url "post_feed" %}">Subscribe to my RSS feed</a></p>
-     <h3>Hottest </h3>
-     {% get_most_commented_posts as most_commented %}
-        <ul>
-     {% for post in most_commented %}
-
-             <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-     {% endfor %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url "home" %}">Home <span class="sr-only">(current)</span></a>
+            </li>
         </ul>
 
     </div>
+</nav>
+
+
+</header>
+<button type="submit" class="btn btn-link"><a href="{% url 'post_new' %}">New Blog Post</a></button>
+<div class="container-fluid">
+{% block content %}
+{% endblock content %}
+</div>
+{#<div id="sidenav" class="sidenav">#}
+{#    <h3>Latest posts</h3>#}
+{#    {% show_latest_posts 3 %}#}
+{#    <p><a href="{% url "post_feed" %}">Subscribe to my RSS feed</a></p>#}
+{#    <h3>Hottest </h3>#}
+{#    {% get_most_commented_posts as most_commented %}#}
+{#    <ul>#}
+{#        {% for post in most_commented %}#}
+{##}
+{#            <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{##}
+{#</div>#}
 </body>
 </html>

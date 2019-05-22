@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% load blog_tags %}
+{%  load static %}
 {% block title %}My Blog{% endblock %}
 {% block content %}
 
+<div class="container-fluid">
     {% for post in posts %}
         <h2>
-            <a href="{{ post.get_absolute_url }}">
+            <a href="{{ post.get_absolute_url }}" class="text-decoration-none">
                 {{ post.title }}
             </a>
         </h2>
@@ -13,7 +15,8 @@
         <p class="date">
             Published {{ post.publish }} by {{ post.author }}
         </p>
-        {{ post.body|markdown|truncatewords_html:30 }}
+        {{ post.body|markdown|truncatewords_html:15 }}
     {% endfor %}
     {% include "pagination.html" with page=page_obj %}
+</div>
 {% endblock content %}
