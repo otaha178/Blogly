@@ -23,7 +23,7 @@ SECRET_KEY = '88ei3aifarp9b4py&w5f4=%ki^+ri&)^bv9okhav%(rw!=odl4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Never put debug value as is, use environment variables, check 12factorapp
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
